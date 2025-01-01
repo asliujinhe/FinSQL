@@ -1,4 +1,5 @@
 set -e
+export HF_ENDPOINT=https://hf-mirror.com
 
 # generate text2sql training dataset with noise_rate 0.2
 python text2sql_data_generator_finsql.py \
@@ -28,12 +29,13 @@ python -u schema_item_classifier_finsql.py \
     --tensorboard_save_path "./tensorboard_log/text2sql_schema_item_classifier_roberta-large_ccks_english" \
     --train_filepath "./preprocessed_data/preprocessed_train_en.json" \
     --dev_filepath "./preprocessed_data/preprocessed_dev_en.json" \
-    --model_name_or_path "./pretrained/roberta-large" \
+    --model_name_or_path "FacebookAI/roberta-large" \
     --use_contents \
     --add_fk_info \
     --mode "train" \
     --base_model "roberta"
 
+#    --model_name_or_path "./pretrained/roberta-large" \
 ## train schema item classifier
 #python -u schema_item_classifier_ccks.py \
 #    --batch_size 16 \
