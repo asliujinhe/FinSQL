@@ -1,0 +1,46 @@
+project_name: Default
+working_dir: ./Parallel_Cross_Encoder
+cmd:
+- bash ./scripts/train_text2sql_schema_item_classifier_finsql.sh
+provisioning:
+  gpu_type: a10g
+  gpu_count: 1
+  cpu_count: 32
+  ram: 128
+teamcity:
+  url: https://mlops.staging.sandbox.teamcity.aws.intellij.net
+  build_conf_id: id28549224fa83407b9ae4fa3146ea157a_JetTrain
+env:
+  variables: {}
+  python:
+    pip:
+      requirements_path: requirements.txt
+    version: "3.10"
+  secrets:
+    variables: {}
+    ssh_keys: []
+  aws:
+    sync_config: false
+    sync_credentials: false
+    sync_cache: false
+project_sync:
+  local:
+    root: "."
+    storage_name: Cadence Storage
+    uri: ""
+    exclude: []
+    include: []
+    sync_back: false
+    snapshots: true
+    storage_type: DEFAULT
+inputs: []
+outputs:
+- type: OUTPUT
+  storage_name: Cadence Storage
+  uri: ""
+  path: "."
+  acceleration: false
+  storage_type: DEFAULT
+mounts: []
+storages: []
+description: ""
